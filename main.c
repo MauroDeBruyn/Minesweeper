@@ -56,8 +56,11 @@ int main(void)
             break;
           }
 
+          break;
+
         case loadUserGame:         //Load game
           /*code*/
+          currentState = gameOver;
 
           break;
 
@@ -75,6 +78,7 @@ int main(void)
         case gameOver:         //Game over screen
           printGameOver();
 
+          currentState = mainMenu;
           break;
 
         default:

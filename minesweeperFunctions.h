@@ -51,11 +51,11 @@ printf("  / ____|                       |  \\/  |                       | |\n");
 printf(" | |  __  __ _ _ __ ___   ___   | \\  / | __ _ _ __  _   _  __ _| |\n");
 printf(" | | |_ |/ _` | '_ ` _ \\ / _ \\  | |\\/| |/ _` | '_ \\| | | |/ _` | |\n");
 printf(" | |__| | (_| | | | | | |  __/  | |  | | (_| | | | | |_| | (_| | |\n");
-printf("  \\_____|\\__,_|_| |_| |_|\\___|  |_|  |_|\\__,_|_| |_|\\__,_|\\__,_|_|\n\n\n\n");
+printf("  \\_____|\\__,_|_| |_| |_|\\___|  |_|  |_|\\__,_|_| |_|\\__,_|\\__,_|_|\n\n\n");
                                                                   
                                                                   
 
-  printf("Game manual:\n\n\nTo win Minesweeper, you have to type in a coordinate.\n\nWhen given a coordinate, there will be numbers in the surrounding positions that indicate how many mines are the given coordinates surroudings.\n\nIf you type a coordinate with a mine underneath, it will be game over.\n\n\n\n\n\n");
+  printf("To win Minesweeper, you have to type in a coordinate.\n\nWhen given a coordinate, there will be numbers in the surrounding positions that indicate how many mines are the given coordinates surroudings.\n\nIf you type a coordinate with a mine underneath, it will be game over.\n\n\n\n\n\n");
   printf("Press ENTER to continue...\n\n");
 
   getchar();
@@ -79,7 +79,10 @@ void printGameOver() // Prints "Game Over"
   printf("| |_\\ \\| | | || |  | || |___  \\ \\_/ /\\ \\_/ / |___| |\\ \\ \n");
   printf(" \\____/\\_| |_/\\_|  |_/\\____/   \\___/  \\___/\\____/\\_| \\_| \n");
 
-  printf("\n\nThe given coordinate contained a mine!");
+  printf("\n\nThe given coordinate contained a mine!\n\n");
+  delay(3);
+  printf("Returning to main menu...");
+  delay(3);
 }
 
 void loadingBar(int seconds, int steps) //Loading screen
