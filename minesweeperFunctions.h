@@ -5,14 +5,14 @@
 #include <time.h>
 
 //Define special commands
-#define clrscr() printf("\e[1;1H\e[2J")
+#define clrscr() printf("\e[1;1H\e[2J") //Clears the consol
 
-void welcome();
-void printLine();
-void printGameOver();
-void loadingBar(int seconds, int steps);
-int startMenu();
-void delay(int number_of_seconds);
+void welcome(); //Welcome screen and game manual
+void printLine(); //Prints a line
+void printGameOver(); //Prints game over
+void loadingBar(int seconds, int steps); //Loading screen
+int startMenu(); //Prints the main menu
+void delay(int number_of_seconds); //Delay in seconds
 
 void welcome() // Welcomes you to the game, and prints game manual.
 {
@@ -129,14 +129,14 @@ int startMenu() //Asks user to load new or previous game
         case 1:
             clrscr();
             printf("Loading game:\n");
-            loadingBar(1, 40);
+            loadingBar(1, 10);
 
             break;
 
         case 2:
             clrscr();
             printf("Loding new game:\n");
-            loadingBar(1, 40);
+            loadingBar(1, 10);
 
         case 3:
             break;

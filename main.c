@@ -8,6 +8,7 @@
 
 int main(void)
 {
+  //Declarations
   int menuChoice = 0;
   uint8_t chessboard[8][8] = {
       {'#', '#', '#', '#', '#', '#', '#', '#'},
@@ -17,38 +18,38 @@ int main(void)
       {'#', '#', '#', '#', '#', '#', '#', '#'},
       {'#', '#', '#', '#', '#', '#', '#', '#'},
       {'#', '#', '#', '#', '#', '#', '#', '#'},
-      {'#', '#', '#', '#', '#', '#', '#', '#'}};
+      {'#', '#', '#', '#', '#', '#', '#', '#'}}; //Declare empty hidden minefield
 
-  enum state {bootWelcome, mainMenu, loadUserGame, loadNewGame, gameOver, closeGame};
-  enum state currentState = bootWelcome;
+  enum state {bootWelcome, mainMenu, loadUserGame, loadNewGame, gameOver, closeGame}; //Declare states
+  enum state currentState = bootWelcome; //Assign states
 
   while(1)
     {
       switch (currentState)
         {
-        case bootWelcome:         //Welcome + game manual
+        case bootWelcome: //Welcome + game manual
           clrscr();
-          loadingBar(3, 40);
+          loadingBar(3, 15);
           welcome();
 
           currentState = mainMenu;
           break;
 
-        case mainMenu:         //asks user to load or start a new game (1 = load previous / 2 = start new)
+        case mainMenu: //asks user to load, start a new game or close the terminal
           menuChoice = startMenu();
 
           switch (menuChoice)
           {
           case 1:
-            currentState = loadUserGame;
+            currentState = loadUserGame; //Load saved game
             break;
 
           case 2:
-            currentState = loadNewGame;
+            currentState = loadNewGame; //Load new game
             break;
 
           case 3:
-            currentState = closeGame;
+            currentState = closeGame; //close terminal
             break;
           
           default:
@@ -58,13 +59,13 @@ int main(void)
 
           break;
 
-        case loadUserGame:         //Load game
+        case loadUserGame: //Load game
           /*code*/
           currentState = gameOver;
 
           break;
 
-        case loadNewGame:         //Load new game
+        case loadNewGame: //Load new game
 
           break;
 
@@ -75,13 +76,13 @@ int main(void)
 
           exit(0);
 
-        case gameOver:         //Game over screen
+        case gameOver: //Gameover screen
           printGameOver();
 
           currentState = mainMenu;
           break;
 
-        default:
+        default: //Unexpected state
           printf("Unexpected error occured");
 
           break;
