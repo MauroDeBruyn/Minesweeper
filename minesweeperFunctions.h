@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <windows.h>
 #include <time.h>
+#include <stdint.h>
 
 //Define special commands
 #define clrscr() printf("\e[1;1H\e[2J") //Clears the consol
@@ -13,6 +14,12 @@ void printGameOver(); //Prints game over
 void loadingBar(int seconds, int steps); //Loading screen
 int startMenu(); //Prints the main menu
 void delay(int number_of_seconds); //Delay in seconds
+void printMinefield(void); //prints the minefield for the user
+void makeMineField(uint8_t userPrefferedMines); //Fills minefield with bombs
+
+//Array minefield
+uint8_t hiddenMineField[8][8]={0};//Fill field with zero's
+uint8_t userField[8][8]={{35,35,35,35,35,35,35,35},{35,35,35,35,35,35,35,35},{35,35,35,35,35,35,35,35},{35,35,35,35,35,35,35,35},{35,35,35,35,35,35,35,35},{35,35,35,35,35,35,35,35},{35,35,35,35,35,35,35,35},{35,35,35,35,35,35,35,35}}; //Userfield
 
 void welcome() // Welcomes you to the game, and prints game manual.
 {
@@ -161,4 +168,51 @@ void delay(int number_of_seconds)
     // looping till required time is not achieved
     while (clock() < start_time + milli_seconds)
         ;
+}
+
+void makeMineField(uint8_t userPrefferedMines)
+{
+    uint8_t xAs = 0;
+    uint8_t yAs = 0;
+    uint8_t counter = 0;
+
+    //Keep generating mines until the user precified amount of mines are in the field
+    while (counter <= userPrefferedMines)
+    {
+        xAs = rand()%8; //generate random number between 0-7
+        yAs = rand()%8; //generate random number between 0-7
+
+        if(hiddenMineField[xAs][yAs] == 0) //Check if the coordinate contains a mine
+        {
+            hiddenMineField[xAs][yAs] = 1; //Place mine
+            counter++;
+        }
+    }
+    
+}
+
+void printMinefield(void) //Prints the field for the user
+{
+    printf("   A   B   C   D   E   F   G   H\n");
+    printf(" +---+---+---+---+---+---+---+---+\n");
+
+    for(int i = 0; i < 8; i++)
+    {
+        printf("%d|", i+1);
+
+        for(int j = 0; j < 8; j++)
+        {
+            if(userField[i][j]==35)
+            {
+                printf(" %c |",userField[i][j]);
+            }
+
+            else
+            {
+                printf(" %d |",userField[i][j]);
+            }
+        }
+        printf("\n");
+    }
+    printf(" +---+---+---+---+---+---+---+---+\n");
 }

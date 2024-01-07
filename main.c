@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "minesweeperFunctions.h"
 #include <stdint.h>
+#include <stdint.h>
 
 //Define special commands
 #define clrscr() printf("\e[1;1H\e[2J")
@@ -10,6 +11,8 @@ int main(void)
 {
   //Declarations
   int menuChoice = 0;
+  int userPrefferedMines = 0;
+
   uint8_t chessboard[8][8] = {
       {'#', '#', '#', '#', '#', '#', '#', '#'},
       {'#', '#', '#', '#', '#', '#', '#', '#'},
@@ -66,6 +69,11 @@ int main(void)
           break;
 
         case loadNewGame: //Load new game
+
+          printf("How many bombs would you like to place in the minefield?\n");
+          scanf("%d", &userPrefferedMines);
+          makeMineField(userPrefferedMines);
+          printMinefield();
 
           break;
 
