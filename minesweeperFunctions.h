@@ -250,7 +250,8 @@ uint8_t userCoordinate(void)
     int colum; // Initialize to an invalid value
     int c;
 
-    memset(userInput, 0, sizeof(userInput)); //Empty buffer
+    //memset(userInput, 0, sizeof(userInput)); //Empty buffer
+    fflush(stdin);
 
     printf("Type a coordinate or type 'save' to save the game:\n");
 
@@ -273,7 +274,7 @@ uint8_t userCoordinate(void)
     }
 
     // Check for save game
-    if (strcmp("SAVE", userInput) == 0)
+    if (strcmp("SAV", userInput) == 0)
     {
         saveGame();
         return 1; // Indicate that the user saved the game

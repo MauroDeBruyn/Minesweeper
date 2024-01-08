@@ -75,17 +75,26 @@ int main(void)
 
           printf("How many bombs would you like to place in the minefield?\n");
           scanf("%d", &userPrefferedMines);
-          makeMineField(userPrefferedMines);
           clrscr();
+          makeMineField(userPrefferedMines);
 
           while(gameEnd == 0)
           {
             printMinefield();
             gameEnd = userCoordinate();
-           
           }
-
-          currentState = gameOver;
+          
+          if(gameEnd = 1) //saved game
+          {
+            loadingBar(3, 15);
+            currentState = mainMenu;
+          }
+            
+          if(gameEnd == 2) //game over
+          {
+            currentState = gameOver;
+          }
+          
           gameEnd = 0;
 
           break;
