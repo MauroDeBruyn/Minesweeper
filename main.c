@@ -14,16 +14,6 @@ int main(void)
   int userPrefferedMines = 0;
   uint8_t gameEnd = 0;
 
-  uint8_t chessboard[8][8] = {
-      {'#', '#', '#', '#', '#', '#', '#', '#'},
-      {'#', '#', '#', '#', '#', '#', '#', '#'},
-      {'#', '#', '#', '#', '#', '#', '#', '#'},
-      {'#', '#', '#', '#', '#', '#', '#', '#'},
-      {'#', '#', '#', '#', '#', '#', '#', '#'},
-      {'#', '#', '#', '#', '#', '#', '#', '#'},
-      {'#', '#', '#', '#', '#', '#', '#', '#'},
-      {'#', '#', '#', '#', '#', '#', '#', '#'}}; //Declare empty hidden minefield
-
   enum state {bootWelcome, mainMenu, loadUserGame, loadNewGame, gameOver, closeGame}; //Declare states
   enum state currentState = bootWelcome; //Assign states
 
