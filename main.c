@@ -12,6 +12,7 @@ int main(void)
   //Declarations
   int menuChoice = 0;
   int userPrefferedMines = 0;
+  uint8_t gameEnd = 0;
 
   uint8_t chessboard[8][8] = {
       {'#', '#', '#', '#', '#', '#', '#', '#'},
@@ -70,10 +71,22 @@ int main(void)
 
         case loadNewGame: //Load new game
 
+          userPrefferedMines = 0;
+
           printf("How many bombs would you like to place in the minefield?\n");
           scanf("%d", &userPrefferedMines);
           makeMineField(userPrefferedMines);
-          printMinefield();
+          clrscr();
+
+          while(gameEnd == 0)
+          {
+            printMinefield();
+            gameEnd = userCoordinate();
+           
+          }
+
+          currentState = gameOver;
+          gameEnd = 0;
 
           break;
 
